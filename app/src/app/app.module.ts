@@ -11,6 +11,9 @@ import { ConverteMoedasComponent } from './converte-moedas/converte-moedas.compo
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {HttpClientModule} from "@angular/common/http";
+import {MatInputModule} from "@angular/material/input";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatSortModule,
+    MatInputModule,
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule
