@@ -20,27 +20,27 @@ o Enviar link do o github para victorvidigal@gmail.com </p>
 <!--ts-->
  
    * Desenvolver um site web utilizando Angular. Critérios:
-      * Mínimo de 3 páginas (ex.: página principal, página de contato, página de produtos, página
-de cliente)
-      * Divisão das páginas em componentes (Ex.: Topo, Centro, Rodapé, Menu Lateral. São
-exemplos, não regras)
-      * Projeto deve estar disponível no github
-      * Individual ou dupla
+     * Será disponibilizado tempo de aula para realização do trabalho (cerca de 1 aulas)
+     * Apresentação do trabalho inicia-se na aula do dia 19/10/2021
+     * Individual ou dupla
+     * Projeto deve estar disponível no github
+
+
 <!--te-->
 
-<h3 align="center">Ideias de site a ser criado</h3>
-<p>Não se limite aos exemplos. Surpreenda o professor. Portifólio pessoal ou apresentação dos seus projetos já construídos, cursos, experiências ‘Clone’ de uma rede social</p>
+<h3>Consultar:</h3>
 <!--ts-->
- 
-   * Exemplos:
-      *  Instagram UI Clone: <a href="https://dev.to/kunaal438/how-to-make-instagram-cloneusing-
-html-css-fully-responsive-49co">Instagram Clone</a>
-      * Twitter clone: <a href="https://jvadillo.github.io/twitter-bootstrap/">Twitter Clone</a>
-      * Twitter clone: <a href="https://dev.to/somanathgoudar/build-twitter-clone-using-htmland-
-css-tutorial-aop">Twitter Tutorial</a>
-      * Youtube clone: <a href="https://dev.to/somanathgoudar/build-a-youtube-clone-with-justhtml-
-css-for-complete-beginners-4fk1">Youtube Clone</a>
-      * Site de notícias (blog)
+            https://material.angular.io/components/table/overview
+            https://material.angular.io/components/table/examples
+<!--te-->
+<!--ts-->
+      *  Utilizar o componente mat-table do angular material para desenvolver uma tabela com as seguintes características:
+      *  Os dados da tabela (linhas) podem estar definidos estaticamente no código fonte
+      *  Colunas Código e Descrição
+      *  Colunas ordenáveis
+      *  Paginação
+      *  Filtro
+        
 <!--te-->   
    
 
