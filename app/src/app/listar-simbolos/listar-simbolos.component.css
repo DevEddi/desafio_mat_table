@@ -1,3 +1,12 @@
 .container-fluid table{
   width: 100%;
 }
+.search-container{
+  background-color: #424242;
+  border-radius: 10px;
+  margin-bottom:20px;
+}
+.search-container mat-form-field{
+  width: 100%;
+  padding: 5px;
+}
