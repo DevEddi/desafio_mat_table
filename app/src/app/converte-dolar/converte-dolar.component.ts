@@ -4,8 +4,6 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {ConverteDolarService} from "./converte-dolar.service";
 
-
-
 @Component({
   selector: 'app-converte-dolar',
   templateUrl: './converte-dolar.component.html',
@@ -14,7 +12,7 @@ import {ConverteDolarService} from "./converte-dolar.service";
 
 export class ConverteDolarComponent implements OnInit {
 
-  displayedColumns = ['userId', 'id', 'title'];
+  displayedColumns = ['userId', 'id'];
   dataSource!:MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator! : MatPaginator;

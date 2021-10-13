@@ -13,7 +13,7 @@ import {ConverteMoedasService} from "./converte-moedas.service";
 })
 export class ConverteMoedasComponent implements OnInit {
 
-  displayedColumns = ['userId', 'id', 'title'];
+  displayedColumns = ['userId', 'id'];
   dataSource!:MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator! : MatPaginator;

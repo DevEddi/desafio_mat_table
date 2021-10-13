@@ -11,7 +11,7 @@ import {MatSort} from "@angular/material/sort";
 })
 export class ListarSimbolosComponent implements OnInit {
 
-  displayedColumns = ['userId', 'id', 'title'];
+  displayedColumns = ['userId', 'id'];
   dataSource!:MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator! : MatPaginator;

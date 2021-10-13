@@ -22,9 +22,7 @@ import {MatSortModule} from "@angular/material/sort";
     PrincipalComponent,
     ListarSimbolosComponent,
     ConverteDolarComponent,
-    ConverteMoedasComponent,
-
-
+    ConverteMoedasComponent
   ],
   imports: [
     BrowserModule,
