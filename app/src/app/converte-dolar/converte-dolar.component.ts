@@ -12,7 +12,7 @@ import {ConverteDolarService} from "./converte-dolar.service";
 
 export class ConverteDolarComponent implements OnInit {
 
-  displayedColumns = ['userId', 'id'];
+  displayedColumns = ['id', 'title'];
   dataSource!:MatTableDataSource<any>;
 
   @ViewChild('paginator') paginator! : MatPaginator;
