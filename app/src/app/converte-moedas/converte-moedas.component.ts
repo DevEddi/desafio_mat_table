@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import {DataServiceService} from "../listar-simbolos/data-service.service";
+import { FormBuilder } from "@angular/forms";
 import {ConverteMoedasService} from "./converte-moedas.service";
 
+interface Moeda {
+  sigla: string;
+  descricao: string;
+}
 
 @Component({
   selector: 'app-converte-moedas',
@@ -12,25 +13,50 @@ import {ConverteMoedasService} from "./converte-moedas.service";
   styleUrls: ['./converte-moedas.component.css']
 })
 export class ConverteMoedasComponent implements OnInit {
+        constructor(private formBuilder: FormBuilder,
+        private ConverteMoedasService: ConverteMoedasService) { }
 
-  displayedColumns = ['userId', 'id'];
-  dataSource!:MatTableDataSource<any>;
+      // Controla exibição do mat-card que mostra o resultado
+      exibirResultado: boolean = false;
 
-  @ViewChild('paginator') paginator! : MatPaginator;
-  @ViewChild(MatSort) matSort! : MatSort;
-  constructor(private service: ConverteMoedasService) {
+      // Lista de moedas para serem exibidas no componente select (combobox)
+      moedas: Moeda[] = []
 
-  }
+      // Armazena as moedas selecionadas no componente Select
+      moedaOrigemSelecionada: string = '';
+      moedaDestinoSelecionada: string = '';
+      valorSelecionado: number = 0;
 
-  ngOnInit(): void {
-    this.service.getUserData().subscribe((response: any) => {
-      this.dataSource = new MatTableDataSource(response)
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.matSort;
-      console.log('response is', response);
-    })
-  }
-  filterData($event : any){
-    this.dataSource.filter = $event.target.value;
-  }
+      // Armazena os valores calculados
+      valorConvertido: number = 0.0;
+      taxaConversao: number = 0.0;
+
+      ngOnInit(): void {
+      this.ConverteMoedasService.listarSimbolos().subscribe(data => {
+      for (let symbol in data.symbols) {
+      let moeda: Moeda = {
+      sigla: data.symbols[symbol].code,
+      descricao: data.symbols[symbol].description
+      };
+      this.moedas.push(moeda);
+      }
+      })
+      }
+
+      calcularConversao() {
+      this.ConverteMoedasService.converterMoeda(
+        this.moedaOrigemSelecionada,
+        this.moedaDestinoSelecionada,
+        this.valorSelecionado
+        ).subscribe(data => {
+          this.valorConvertido = data.result;
+          this.taxaConversao = data.info.rate
+        });
+
+      this.exibirResultado = true;
+      }
+
+      fecharResultado() {
+      this.exibirResultado = false;
+      }
 }

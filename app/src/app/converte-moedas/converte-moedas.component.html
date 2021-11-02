@@ -1,26 +1,92 @@
-<div class="container-fluid">
-  <div class="search-container">
+
+<!--A interface dverá permitir que o usuário informe o valor que deseja converter,
+ a moeda de origem e a moeda de destino*/
+
+ /*Receber um valor*/
+ /*Tipo moeda*/
+ /*Receber um tipo de moeda a ser convertida*/
+ /*Enviar o valor para conversão*/
+ /*Receber um valor da conversão*/
+ /*Conectar com a api*/
+
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Escolha tipo moeda Atual</label>
+      <br>
+      <select class="form-select" id="primeiroSimbolo" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option *matCellDef="let simbolos">{{ simbolos.simboloMoeda }}</option>
+
+      </select>
+    </div>
+    <h4>Basic mat-select</h4>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="Filtrar dados" autocomplete="off" (keyup)="filterData($event)">
+      <mat-label>Simbolo</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let simbolo" [value]="simbolo.value">
+          {{simbolo.code}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+
+
+
+
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Escolha o tipo de moeda a ser convertido</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    </div>
+  </form>
+</div>
+-->
+<div class="container">
+  <mat-toolbar>
+    <span>Converter Moeda</span>
+  </mat-toolbar>
+
+  <div class="converter-div">
+    <mat-form-field appearance="fill">
+      <mat-label>Moeda Origem</mat-label>
+      <mat-select required [(value)]="moedaOrigemSelecionada" (selectionChange)="fecharResultado()">
+        <mat-option *ngFor="let moeda of moedas" [value]="moeda.sigla">
+          {{moeda.descricao}} ({{moeda.sigla}})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Moeda Destino</mat-label>
+      <mat-select required [(value)]="moedaDestinoSelecionada" (selectionChange)="fecharResultado()">
+        <mat-option *ngFor="let moeda of moedas" [value]="moeda.sigla" change>
+          {{moeda.descricao}} ({{moeda.sigla}})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label>Valor</mat-label>
+      <input matInput type="number" class="example-right-align" placeholder="0,00" required
+             [(ngModel)]="valorSelecionado" (change)="fecharResultado()">
+      <span matPrefix>{{moedaOrigemSelecionada}}&nbsp;</span>
+    </mat-form-field>
+    <p>
+      <button mat-raised-button (click)="calcularConversao()">Calcular Conversão</button>
+    </p>
+
+
+    <mat-card *ngIf="exibirResultado">
+      <p>{{valorSelecionado}} em {{moedaOrigemSelecionada}} equivale a</p>
+      <h1><strong>{{valorConvertido}} em {{moedaDestinoSelecionada}}</strong></h1>
+      <p>Taxa de conversão utilizada: {{taxaConversao}}</p>
+
+      <mat-card-actions>
+        <button mat-raised-button (click)="fecharResultado()">Fechar</button>
+      </mat-card-actions>
+    </mat-card>
+
+
   </div>
-  <table mat-table  matSort [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="userId">
-      <th mat-header-cell mat-sort-header *matHeaderCellDef>Código</th>
-      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
-    </ng-container>
-    <ng-container matColumnDef="id">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef>Descrição</th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator #paginator
-                 [pageSize]="4"
-                 [pageSizeOptions]="[2, 5, 10, 25, 100]">
-  </mat-paginator>
 
 </div>
+
